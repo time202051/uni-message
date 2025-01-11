@@ -12,11 +12,15 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  mounted(){
+    console.log("this",this);
+    
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 @import "@/uni_modules/uview-ui/index.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
