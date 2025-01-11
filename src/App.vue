@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button  @click="goHome">Click me</button>
-    <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   </div>
 </template>
 
@@ -14,10 +14,11 @@ export default {
   },
   methods: {
     goHome(){
-      this.$message.error({
-        message: 'Welcome to Home Page',
-        position: 'bottom'
-      });
+      this.$message.success('Welcome to Home Page');
+      // this.$message({
+      //   type:'error',
+      //   message: 'Welcome to Home Page',
+      // });
     }
   }
 }

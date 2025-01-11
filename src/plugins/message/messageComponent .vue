@@ -40,16 +40,12 @@ export default {
 .message-container {
   position: fixed;
   left: 50%;
-  transform: translateX(-50%); /* 确保居中 */
-  /* background-color: rgba(0, 0, 0, 0.7); */
+  transform: translateX(-50%);
   color: white;
-  /* padding: 10px 20px; */
-  border-radius: 5px;
   z-index: 9999;
   text-align: center;
   max-width: 80%;
   min-width: 150px;
-  width: auto; /* 自动适应内容的宽度 */
 }
 
 .message-container.top {
@@ -65,8 +61,8 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
+  border-radius: 5px;
   box-sizing: border-box;
-  border-radius: 6px;
 }
 
 .message-content.default {
