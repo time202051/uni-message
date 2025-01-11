@@ -1,6 +1,6 @@
 {
   "name": "uni-message",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "main": "dist/uni-message.umd.js",
   "module": "dist/uni-message.esm.js",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "uview-ui": "^2.0.38",
     "vue": "^2.6.14"
   },
   "devDependencies": {
@@ -25,9 +26,11 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "sass": "^1.83.1",
+    "sass-loader": "^10.5.2",
     "vue-template-compiler": "^2.6.14"
   },
-   "keywords": [
+  "keywords": [
     "vue",
     "message",
     "toast",
