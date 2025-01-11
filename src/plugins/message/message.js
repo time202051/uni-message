@@ -49,7 +49,7 @@ Message.install = function(Vue) {
 
 //使用说明
 function instruction() {
-	console.log('%c this.$message插件安装成功！（使用风格和elementUi的message一致）',
+	console.log('%c uni-message插件安装成功！欢迎品尝~',
 		'color: #007BFF; font-weight: bold; font-size: 18px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);');
 	console.groupCollapsed('%c 使用方法 ', 'font-weight: bold; font-size: 16px; color: #333;');
 	console.log('%c 1. 通过类型调用：', 'font-weight: normal; color: #555;');
