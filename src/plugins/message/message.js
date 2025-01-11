@@ -9,6 +9,8 @@ Message.install = function(Vue) {
 	// vue构造器，创建一个“子类”
 	const MessageConstructor = Vue.extend(MessageComponent )
 	const instance = new MessageConstructor()
+  console.log("instance",instance);
+  
 	instance.$mount(document.createElement('div'))
 	document.body.appendChild(instance.$el)
 
@@ -26,6 +28,7 @@ Message.install = function(Vue) {
 	// 定义Vue.prototype.$message的对象方法
 	Vue.prototype.$message = Object.assign(Vue.prototype.$message, {
 		show(type = "default", message) {
+      console.log("ooo",instance,instance.$refs.uToast);
 			instance.$refs.uToast.show({
 				message: message,
 				type: type
