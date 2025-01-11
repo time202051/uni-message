@@ -1,6 +1,22 @@
 <template>
   <div id="app">
     <button  @click="goHome">Click me</button>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1123</div>
+<div>1</div>
+<div>1</div>
+<div>1321</div>
+<div>1</div>
+<div>1321</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   </div>
 </template>
@@ -14,7 +30,11 @@ export default {
   },
   methods: {
     goHome(){
-      this.$message.success('Welcome to Home Page');
+      this.$message.warning('Welcome to Home Page');
+            // this.$message({
+            //   type:'success',
+            //   message: 'Welcome to Home Page',
+            // });
       // this.$message({
       //   type:'error',
       //   message: 'Welcome to Home Page',
