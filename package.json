@@ -1,6 +1,6 @@
 {
   "name": "uni-message",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "private": false,
   "main": "dist/uni-message.umd.js",
   "module": "dist/uni-message.esm.js",
@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "uview-ui": "^2.0.38",
     "vue": "^2.6.14"
   },
   "devDependencies": {

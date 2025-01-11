@@ -15,7 +15,8 @@ Message.install = function(Vue) {
 	document.body.appendChild(instance.$el)
 
 	const showMessage = (options) => {
-		instance.$refs.uToast.show(options);
+     instance.showMessage(options)
+		// instance.$refs.uToast.show(options);
 	};
 
 	Vue.prototype.$message = (options = {
@@ -28,11 +29,14 @@ Message.install = function(Vue) {
 	// 定义Vue.prototype.$message的对象方法
 	Vue.prototype.$message = Object.assign(Vue.prototype.$message, {
 		show(type = "default", message) {
-      console.log("ooo",instance,instance.$refs.uToast);
-			instance.$refs.uToast.show({
+     instance.showMessage({
 				message: message,
 				type: type
-			});
+			})
+			// instance.$refs.uToast.show({
+			// 	message: message,
+			// 	type: type
+			// });
 		},
 
 		default (message = "默认操作") {

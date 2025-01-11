@@ -1,27 +1,30 @@
 <template>
   <div id="app">
+    <button  @click="goHome">Click me</button>
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  },
   mounted(){
     console.log("this",this);
-    
+  },
+  methods: {
+    goHome(){
+      this.$message.error({
+        message: 'Welcome to Home Page',
+        position: 'bottom'
+      });
+    }
   }
 }
 </script>
 
 <style lang="scss">
-@import "@/uni_modules/uview-ui/index.scss";
+// @import "@/uni_modules/uview-ui/index.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
