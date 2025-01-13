@@ -7,18 +7,21 @@ Message.install = function(Vue) {
 	instruction()
 
 	// vue构造器，创建一个“子类”
-	const MessageConstructor = Vue.extend(MessageComponent )
-	const instance = new MessageConstructor()
-  console.log("instance",instance);
-  
-	instance.$mount(document.createElement('div'))
-	document.body.appendChild(instance.$el)
-  // document.querySelector('uni-app').appendChild(instance.$el);
+	const MessageConstructor = Vue.extend(MessageComponent)
 
+	let instance = null
 	const showMessage = (options) => {
-     instance.showMessage(options)
-		// instance.$refs.uToast.show(options);
-	};
+		// 只能存在一个
+		const shadeElement = document.getElementById('message-iou8098h89y90j8');
+		if (shadeElement) {
+			shadeElement.remove();
+		}
+		instance = new MessageConstructor()
+		console.log("instance", instance);
+		instance.$mount(document.createElement('div'))
+		document.body.appendChild(instance.$el)
+		instance.show(options)
+	}
 
 	Vue.prototype.$message = (options = {
 		type: "success",
@@ -30,17 +33,13 @@ Message.install = function(Vue) {
 	// 定义Vue.prototype.$message的对象方法
 	Vue.prototype.$message = Object.assign(Vue.prototype.$message, {
 		show(type = "success", message) {
-     instance.showMessage({
+			showMessage({
 				message: message,
 				type: type
 			})
-			// instance.$refs.uToast.show({
-			// 	message: message,
-			// 	type: type
-			// });
 		},
 
-		warning (message = "警告哦") {
+		warning(message = "警告哦") {
 			this.show("warning", message);
 		},
 		success(message = "操作成功！") {
@@ -69,7 +68,7 @@ function instruction() {
 	console.log('   this.$message({ type: "info", message: "默认操作" });');
 	console.log('%c   this.$message({ type: "success", message: "操作成功！" });', 'color: #59d892;');
 	console.log('%c   this.$message({ type: "error", message: "操作失败！" });', 'color: #dc3545;');
-	console.log('   this.$message({ type: "warning", message: "警告哦~" });','color: #ffc107;');
+	console.log('   this.$message({ type: "warning", message: "警告哦~" });', 'color: #ffc107;');
 	console.groupEnd();
 }
 

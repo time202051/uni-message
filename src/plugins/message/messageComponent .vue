@@ -1,91 +1,236 @@
+
 <template>
-    <div v-if="visible" :class="['message-container', position]" :style="{ top: position === 'top' ? '10px' : '', bottom: position === 'bottom' ? '10px' : '' }">
-      <div :class="['message-content', type]">
-        <span v-if="loading" class="loading-icon">...</span>
-        <span v-else>{{ message }}</span>
-      </div>
-    </div>
+	<div class="messagebox-shade" id="message-iou8098h89y90j8" v-if="isShow"
+		:style="[{'background-color':maskColor,'pointer-events': 'none'}]" @touchmove.stop="">
+		<div class="messagebox-main"
+			:style="[{'width':'auto','minWidth':minWidth,'maxWidth':maxWidth,'background':background,'border-radius':radius+'px'}]">
+			<div class="messagebox-content" :style="[{'padding':padding}]">
+				<div v-if="imgUrl.length > 0" class="flexContentCenter">
+					<div style="margin-bottom: 6px;" :style="[setImageSize]">
+						<image class="image" :src="imgUrl"></image>
+					</div>
+				</div>
+				<div class="flexContentCenter">
+					<span class="message" :style="[messageStyle]">{{message}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      visible: false,
-      message: '',
-      type: '',
-      position: 'center',
-      duration: 2000,
-      loading: false,
-    };
-  },
-  methods: {
-    showMessage({ message, type = 'default', position = 'center', duration = 2000, loading = false }) {
-      this.message = message;
-      this.type = type;
-      this.position = position;
-      this.duration = duration;
-      this.loading = loading;
-      this.visible = true;
+	import {
+		success_icon,
+		error_icon,
+		warning_icon
+	} from './static/image.js'
+	import {
+		themeEnum
+	} from './static/theme.js'
+	export default {
+		name: "messageComponent",
+		data() {
+			return {
+				type: 'success', //有success，error，warning, info
+				duration: 2, //动画时间
+				radius: 5, //圆角
+				isShow: false, //是否显示弹框
+				maskColor: "transparent", //遮罩层的背景颜色
+				background: 'rgba(0, 0, 0, 0.8)', //弹窗的背景
+				padding: '12px',
+				imageSize: {
+					width: '32px',
+					height: '32px'
+				},
+				imageUrl: "",
+				maxWidth: '80%', //弹窗的大小
+				minWidth: '85px',
+				message: "", //弹窗的内容
+				messageStyle: {}, //内容的样式
+				originalData: null,
+				time: null
+			}
+		},
+		computed: {
+			setImageSize() {
+				let size = {}
+				size.width = this.imageSize.width || '32px'
+				size.height = this.imageSize.height || '32px'
+				return size
+			},
+			//图片采用base64位，为了兼容小程序，app，vue3
+			imgUrl() {
+				if ((this.imageUrl || '').length > 0) {
+					return this.imageUrl
+				}
+				if (this.type === 'success') {
+					return success_icon()
+				} else if (this.type === 'error') {
+					return error_icon()
+				} else if (this.type === 'warning') {
+					return warning_icon()
+				}
+				return ''
+			}
+		},
+		methods: {
+			typeEffect(type = "success") {
+				return {
+					message: "提示",
+					duration: 2.5,
+					radius: 5,
+					background: themeEnum[type].backgroundColor,
+					maxWidth: '80%',
+					messageStyle: {
+						'color': themeEnum[type].color,
+						'text-align': 'center'
+					}
+				}
+			},
+			show(data = {}) {
+				console.log("显示", data);
+				const type = data.type || 'success'
+				const configData = {
+					type: 'success',
+					message: "提示",
+					duration: 2.5,
+					radius: 5,
+					background: themeEnum[type].backgroundColor,
+					maxWidth: '80%',
+					messageStyle: {
+						'color': themeEnum[type].color,
+						'text-align': 'center'
+					}
+				}
+				const tempData = {
+					...configData,
+					...data
+				}
+				Object.keys(tempData).forEach(key => {
+					this[key] = tempData[key]
+				})
+				this.isShow = true
+				if (this.duration > 0) {
+					let that = this
+					this.time = setTimeout(function() {
+						that.time = null
+						that.close()
+					}, that.duration * 1000)
+				}
+			},
+			close() {
+				this.isShow = false
+			},
 
-      setTimeout(() => {
-        this.visible = false;
-      }, this.duration);
-    },
-  },
-};
+		},
+		beforeCreate() {
+			if (this.time !== null) {
+				clearTimeout(this.time)
+			}
+		}
+	}
 </script>
 
-<style lang="scss" scoped>
-.message-container {
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  z-index: 9999999991; /* 设定一个较高的z-index，确保它在最上层 */
-  text-align: center;
-  max-width: 80%;
-  min-width: 150px;
-  width: auto;
-}
-.center {
-  top:35%;
-}
+<style scoped>
+	.messagebox-shade {
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		background-color: rgba(0, 0, 0, 0.45);
+		z-index: 99999999999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 
-.top {
-  top: 10px;
-}
+	.messagebox-main {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		background: white;
+		width: 80%;
+		border-radius: 5px;
+		overflow: hidden;
+		box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.04);
+		box-sizing: border-box;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-attachment: fixed;
+	}
 
-.bottom {
-  bottom: 10px !important;
-}
+	.background-content {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		left: 0;
+	}
 
-.message-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
+	.messagebox-content {
+		box-sizing: border-box;
+		width: 100%;
+		padding: 20px;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		white-space: pre-wrap;
+	}
 
-.message-content.info {
-  background-color: rgba(0, 0, 0, 0.7);
-}
+	.rightTopClose {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 35px;
+		height: 35px;
+		position: absolute;
+		z-index: 100;
+		top: 3px;
+		right: 5px;
+	}
 
-.message-content.success {
-  background-color: #59d892;
-}
+	.closeImage {
+		height: 15px;
+		width: 15px;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
 
-.message-content.error {
-  background-color: #dc3545;
-}
+	.image {
+		height: 100%;
+		width: 100%;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
 
-.message-content.warning {
-  background-color: #f0ad4e;
-}
+	.fadelogOutOpcity {
+		-webkit-transition: all 0.25s;
+		-moz-transition: all 0.25s;
+		-ms-transition: all 0.25s;
+		-o-transition: all 0.25s;
+		transition: all 0.25s;
+		animation-timing-function: ease-out;
+		-webkit-animation-timing-function: ease-out;
+		opacity: 0;
+	}
 
-.loading-icon {
-  margin-right: 5px;
-}
+	.flexContentCenter {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+
+	.message {
+		color: #FFFFFF;
+		font-size: 14.5px;
+		word-break: break-all;
+		text-align: center;
+		white-space: pre-wrap;
+	}
 </style>
