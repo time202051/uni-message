@@ -12,8 +12,8 @@ Message.install = function(Vue) {
   console.log("instance",instance);
   
 	instance.$mount(document.createElement('div'))
-	// document.body.appendChild(instance.$el)
-  document.querySelector('uni-app').appendChild(instance.$el);
+	document.body.appendChild(instance.$el)
+  // document.querySelector('uni-app').appendChild(instance.$el);
 
 	const showMessage = (options) => {
      instance.showMessage(options)
