@@ -63,15 +63,15 @@
 			},
 			//图片采用base64位，为了兼容小程序，app，vue3
 			imgUrl() {
-				if ((this.imageUrl || '').length > 0) {
-					return this.imageUrl
-				}
+				// if ((this.imageUrl || '').length > 0) {
+				// 	return this.imageUrl
+				// }
 				if (this.type === 'success') {
-					return successIcon  || success_icon()
+					return require('@/assets/success_icon.png') || successIcon  || success_icon()
 				} else if (this.type === 'error') {
-					return errorIcon || error_icon()
+					return require('@/assets/error_icon.png') || errorIcon || error_icon()
 				} else if (this.type === 'warning') {
-					return warningIcon || warning_icon()
+					return require('@/assets/warning_icon.png') || warningIcon || warning_icon()
 				}
 				return ''
 			}
