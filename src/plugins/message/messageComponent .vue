@@ -5,9 +5,9 @@
 		<div class="messagebox-main"
 			:style="[{'width':'auto','minWidth':minWidth,'maxWidth':maxWidth,'background':background,'border-radius':radius+'px'}]">
 			<div class="messagebox-content" :style="[{'padding':padding}]">
-				<div v-if="imgUrl.length > 0" class="flexContentCenter">
+				<div v-if="imgUrl" class="flexContentCenter">
 					<div style="margin-bottom: 6px;" :style="[setImageSize]">
-						<image class="image" :src="`data:image/png;base64,${imgUrl}`" ></image>
+						<image class="image" :src="imgUrl"></image>
 					</div>
 				</div>
 				<div class="flexContentCenter">
@@ -24,6 +24,9 @@
 		error_icon,
 		warning_icon
 	} from './static/image.js'
+  import successIcon  from './static/success_icon.png';
+  import errorIcon  from './static/error_icon.png';
+  import warningIcon  from './static/warning_icon.png';
 	import {
 		themeEnum
 	} from './static/theme.js'
@@ -64,11 +67,11 @@
 					return this.imageUrl
 				}
 				if (this.type === 'success') {
-					return success_icon()
+					return successIcon  || success_icon()
 				} else if (this.type === 'error') {
-					return error_icon()
+					return errorIcon || error_icon()
 				} else if (this.type === 'warning') {
-					return warning_icon()
+					return warningIcon || warning_icon()
 				}
 				return ''
 			}
