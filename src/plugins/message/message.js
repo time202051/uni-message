@@ -17,7 +17,6 @@ Message.install = function(Vue) {
 			shadeElement.remove();
 		}
 		instance = new MessageConstructor()
-		console.log("instance", instance);
 		instance.$mount(document.createElement('div'))
 		document.body.appendChild(instance.$el)
 		instance.show(options)
@@ -42,10 +41,10 @@ Message.install = function(Vue) {
 		warning(message = "警告哦") {
 			this.show("warning", message);
 		},
-		success(message = "操作成功！") {
+		success(message = "操作成功") {
 			this.show("success", message);
 		},
-		error(message = "操作失败！") {
+		error(message = "操作失败") {
 			this.show("error", message);
 		},
 		info(message = "请耐心等待~") {
