@@ -20,11 +20,11 @@
 
 <script>
 	import {
-		success_icon,
+		// success_icon,
 		error_icon,
 		warning_icon
 	} from './static/image.js'
-  import successIcon  from './static/success_icon.png';
+  // import successIcon  from './static/success_icon.png';
   import errorIcon  from './static/error_icon.png';
   import warningIcon  from './static/warning_icon.png';
 	import {

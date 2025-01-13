@@ -1,6 +1,6 @@
 {
   "name": "uni-message",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "private": false,
   "main": "dist/uni-message.umd.js",
   "module": "dist/uni-message.esm.js",
