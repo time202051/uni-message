@@ -67,7 +67,7 @@
 				// 	return this.imageUrl
 				// }
 				if (this.type === 'success') {
-					return require('@/assets/success_icon.png') || successIcon  || success_icon()
+					return require('@/assets/success_icon.png')
 				} else if (this.type === 'error') {
 					return require('@/assets/error_icon.png') || errorIcon || error_icon()
 				} else if (this.type === 'warning') {
