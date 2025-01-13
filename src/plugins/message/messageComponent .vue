@@ -7,7 +7,7 @@
 			<div class="messagebox-content" :style="[{'padding':padding}]">
 				<div v-if="imgUrl.length > 0" class="flexContentCenter">
 					<div style="margin-bottom: 6px;" :style="[setImageSize]">
-						<image class="image" :src="imgUrl"></image>
+						<image class="image" :src="`data:image/png;base64,${imgUrl}`" ></image>
 					</div>
 				</div>
 				<div class="flexContentCenter">
