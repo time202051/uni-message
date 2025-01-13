@@ -42,7 +42,7 @@ export default {
   left: 50%;
   transform: translateX(-50%);
   color: white;
-  z-index: 999999999; /* 设定一个较高的z-index，确保它在最上层 */
+  z-index: 9999999999; /* 设定一个较高的z-index，确保它在最上层 */
   text-align: center;
   max-width: 80%;
   min-width: 150px;
