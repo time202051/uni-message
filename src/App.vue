@@ -1,23 +1,5 @@
 <template>
   <div id="app">
-    <button  @click="goHome">Click me</button>
-<div>1</div>
-<div>1</div>
-<div>1</div>
-<div>1</div>
-<div>1</div>
-<div>1</div>
-<div>1</div>
-<div>1123</div>
-<div>1</div>
-<div>1</div>
-<div>1321</div>
-<div>1</div>
-<div>1321</div>
-<div>1</div>
-<div>1</div>
-<div>1</div>
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   </div>
 </template>
 
@@ -25,32 +7,11 @@
 
 export default {
   name: 'App',
-  mounted(){
-    console.log("this",this);
-  },
-  methods: {
-    goHome(){
-      this.$message({
-        type:'error',
-        message:'Welcome to Home Page',
-        duration:100000
-      })
-      // this.$message.success('Welcome to Home Page123');
-            // this.$message({
-            //   type:'success',
-            //   message: 'Welcome to Home Page',
-            // });
-      // this.$message({
-      //   type:'error',
-      //   message: 'Welcome to Home Page',
-      // });
-    }
-  }
+  methods: {}
 }
 </script>
 
 <style lang="scss">
-// @import "@/uni_modules/uview-ui/index.scss";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

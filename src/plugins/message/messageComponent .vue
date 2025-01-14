@@ -19,11 +19,6 @@
 </template>
 
 <script>
-	// import {
-	// 	success_icon,
-	// 	error_icon,
-	// 	warning_icon
-	// } from './static/image.js'
   import successIcon  from '@/assets/success_icon.png';
   import errorIcon  from '@/assets/error_icon.png';
   import warningIcon  from '@/assets/warning_icon.png';
@@ -52,7 +47,6 @@
 				messageStyle: {}, //内容的样式
 				originalData: null,
 				time: null,
-        // successsBase64:""
 			}
 		},
 		computed: {
@@ -62,43 +56,24 @@
 				size.height = this.imageSize.height || '32px'
 				return size
 			},
-			//图片采用base64位，为了兼容小程序，app，vue3
 			imgUrl() {
 				if (this.type === 'success') {
           return successIcon;
-          // return success_icon()
-					// return require('@/assets/success_icon.png')
 				} else if (this.type === 'error') {
           return errorIcon;
-					// return require('@/assets/error_icon.png') || errorIcon || error_icon()
 				} else if (this.type === 'warning') {
           return warningIcon;
-					// return require('@/assets/warning_icon.png') || warningIcon || warning_icon()
 				}
 				return ''
 			}
 		},
 		methods: {
-			typeEffect(type = "success") {
-				return {
-					message: "提示",
-					duration: 2.5,
-					radius: 5,
-					background: themeEnum[type].backgroundColor,
-					maxWidth: '80%',
-					messageStyle: {
-						'color': themeEnum[type].color,
-						'text-align': 'center'
-					}
-				}
-			},
 			show(data = {}) {
-				console.log("显示", data);
 				const type = data.type || 'success'
 				const configData = {
 					type: 'success',
-					message: "提示",
-					duration: 2.5,
+					message: "操作成功",
+					duration: 2,
 					radius: 5,
 					background: themeEnum[type].backgroundColor,
 					maxWidth: '80%',
