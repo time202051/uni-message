@@ -7,7 +7,7 @@
 			<div class="messagebox-content" :style="[{'padding':padding}]">
 				<div v-if="imgUrl" class="flexContentCenter">
 					<div style="margin-bottom: 6px;" :style="[setImageSize]">
-						<image class="image" :src="imgUrl"></image>
+						<img class="image" :src="imgUrl"  alt="" />
 					</div>
 				</div>
 				<div class="flexContentCenter">
@@ -19,14 +19,14 @@
 </template>
 
 <script>
-	import {
-		// success_icon,
-		error_icon,
-		warning_icon
-	} from './static/image.js'
-  // import successIcon  from './static/success_icon.png';
-  import errorIcon  from './static/error_icon.png';
-  import warningIcon  from './static/warning_icon.png';
+	// import {
+	// 	success_icon,
+	// 	error_icon,
+	// 	warning_icon
+	// } from './static/image.js'
+  import successIcon  from '@/assets/success_icon.png';
+  import errorIcon  from '@/assets/error_icon.png';
+  import warningIcon  from '@/assets/warning_icon.png';
 	import {
 		themeEnum
 	} from './static/theme.js'
@@ -51,7 +51,8 @@
 				message: "", //弹窗的内容
 				messageStyle: {}, //内容的样式
 				originalData: null,
-				time: null
+				time: null,
+        // successsBase64:""
 			}
 		},
 		computed: {
@@ -63,15 +64,16 @@
 			},
 			//图片采用base64位，为了兼容小程序，app，vue3
 			imgUrl() {
-				// if ((this.imageUrl || '').length > 0) {
-				// 	return this.imageUrl
-				// }
 				if (this.type === 'success') {
-					return require('@/assets/success_icon.png')
+          return successIcon;
+          // return success_icon()
+					// return require('@/assets/success_icon.png')
 				} else if (this.type === 'error') {
-					return require('@/assets/error_icon.png') || errorIcon || error_icon()
+          return errorIcon;
+					// return require('@/assets/error_icon.png') || errorIcon || error_icon()
 				} else if (this.type === 'warning') {
-					return require('@/assets/warning_icon.png') || warningIcon || warning_icon()
+          return warningIcon;
+					// return require('@/assets/warning_icon.png') || warningIcon || warning_icon()
 				}
 				return ''
 			}

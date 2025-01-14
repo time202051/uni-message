@@ -30,7 +30,12 @@ export default {
   },
   methods: {
     goHome(){
-      this.$message.warning('Welcome to Home Page');
+      this.$message({
+        type:'error',
+        message:'Welcome to Home Page',
+        duration:100000
+      })
+      // this.$message.success('Welcome to Home Page123');
             // this.$message({
             //   type:'success',
             //   message: 'Welcome to Home Page',
