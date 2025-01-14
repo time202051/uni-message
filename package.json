@@ -1,6 +1,6 @@
 {
   "name": "uni-message",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": false,
   "main": "dist/uni-message.umd.js",
   "module": "dist/uni-message.esm.js",
@@ -38,7 +38,7 @@
   ],
   "author": "lijiapeng",
   "license": "MIT",
-  "description": "A simple and easy-to-use message component for Vue.js",
+  "description": "一个简单好用的函数式消息提示插件",
   "eslintConfig": {
     "root": true,
     "env": {
